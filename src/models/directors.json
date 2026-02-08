@@ -1,0 +1,30 @@
+[
+  {
+    "id": "38a09a39-ebf5-4c1a-b7cf-207d14df8365",
+    "name": "Steven Spielberg",
+    "movies": [
+      {
+        "id": "2f708760-07e2-49cc-879a-2d6300f573df",
+        "title": "Close Encounters of the Third Kind"
+      },
+      {
+        "id": "0cda9ef4-60e5-4c2f-80af-23a3c5156130",
+        "title": "ET the Extra Terrestrial"
+      }
+    ]
+  },
+  {
+    "id": "f8ed330e-9e5f-4a6b-a2e8-b3f07b96c3dc",
+    "name": "Christopher Nolan",
+    "movies": [
+      {
+        "id": "e1a1babc-3b3c-4a42-9f8b-8e7bb21c4567",
+        "title": "Inception"
+      },
+      {
+        "id": "9d9dbb2a-56a4-4f9f-b1d7-36b2ccfe9988",
+        "title": "Interstellar"
+      }
+    ]
+  }
+]
