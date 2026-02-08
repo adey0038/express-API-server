@@ -36,29 +36,37 @@ function addDirector(req, res) {
 }
 
 function putDirector(req, res) {
-  let director = Directors.find((d) => d.id === req.params.id);
-  if (director) {
-    director.name = req.body.name;
-    res.json({ message: "Replaced director", director });
-  } else {
+  let index = Directors.findIndex((d) => d.id === req.params.id);
+  if (index < 0) {
     res
       .status(404)
       .json({ message: `Director with id ${req.params.id} not found` });
   }
+  const newDirector = {
+    id: Directors[index].id,
+    name: req.body.name ?? "",
+    movies: req.body.movies ?? [],
+  };
+  Directors[index] = newDirector;
+  res.json({ message: "Replaced director", director: Directors[index] });
 }
 
 function patchDirector(req, res) {
-  let dir = Directors.find((d) => d.id === req.params.id);
-  if (dir) {
-    if (req.params.id) {
-      dir.name = req.body.name;
-    }
-    res.json({ message: "Directors updated", dir });
-  } else {
-    res
-      .status(404)
-      .json({ message: `Director with id ${req.params.id} not found` });
+  let index = Directors.findIndex((d) => d.id === req.params.id);
+  if (index < 0) {
+    res.status(404).json({
+      message: `Director with id ${req.params.id} not found`,
+    });
   }
+  const { id: _id, ...updates } = req.body;
+  Directors[index] = {
+    ...Directors[index],
+    ...updates,
+  };
+  res.json({
+    message: "Director updated",
+    director: Directors[index],
+  });
 }
 
 function deleteDirector(req, res) {

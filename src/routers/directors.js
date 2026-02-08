@@ -13,8 +13,8 @@ const directorsRouter = Router();
 directorsRouter.get("/", getAllDirectors);
 directorsRouter.get("/:id", getOneDirector);
 directorsRouter.post("/", addDirector);
-directorsRouter.put("/:mid", putDirector);
-directorsRouter.patch("/:mid", patchDirector);
+directorsRouter.put("/:id", putDirector);
+directorsRouter.patch("/:id", patchDirector);
 directorsRouter.delete("/:id", deleteDirector);
 
 export default directorsRouter;
