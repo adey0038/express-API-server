@@ -3,14 +3,18 @@ import {
   getAllDirectors,
   getOneDirector,
   addDirector,
+  putDirector,
+  patchDirector,
   deleteDirector,
 } from "./../controllers/index.js";
 
 const directorsRouter = Router();
 
-directorsRouter.get("/api/directors", getAllDirectors);
-directorsRouter.get("/api/directors/:id", getOneDirector);
-directorsRouter.post("/api/directors", addDirector);
-directorsRouter.delete("/api/director/:id", deleteDirector);
+directorsRouter.get("/", getAllDirectors);
+directorsRouter.get("/:id", getOneDirector);
+directorsRouter.post("/", addDirector);
+directorsRouter.put("/:mid", putDirector);
+directorsRouter.patch("/:mid", patchDirector);
+directorsRouter.delete("/:id", deleteDirector);
 
 export default directorsRouter;
