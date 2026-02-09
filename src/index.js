@@ -14,10 +14,12 @@ app.use("/api/directors/:id/movies", moviesRouter);
 //handles router from movies api
 
 app.use("/api", (req, res) => {
+  //handles the initial end point
   res.send("Server is active and running");
 });
 
 app.use((req, res) => {
+  //handles other routes
   res.status(404).send("No Server!!!");
 });
 

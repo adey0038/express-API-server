@@ -220,13 +220,16 @@ function deleteMovie(req, res) {
   }
 }
 
-export {
+const directorController = {
   getAllDirectors,
   getOneDirector,
   addDirector,
   putDirector,
   patchDirector,
   deleteDirector,
+};
+
+const movieController = {
   getAllMovies,
   getOneMovie,
   addMovie,
@@ -234,3 +237,5 @@ export {
   patchMovie,
   deleteMovie,
 };
+
+export { directorController, movieController };

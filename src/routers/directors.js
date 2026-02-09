@@ -1,20 +1,29 @@
 import { Router } from "express";
-import {
-  getAllDirectors,
-  getOneDirector,
-  addDirector,
-  putDirector,
-  patchDirector,
-  deleteDirector,
-} from "./../controllers/index.js";
+import { directorController } from "./../controllers/index.js";
+import { validateDirector, isAuth } from "./../services/index.js";
 
 const directorsRouter = Router();
 
-directorsRouter.get("/", getAllDirectors);
-directorsRouter.get("/:id", getOneDirector);
-directorsRouter.post("/", addDirector);
-directorsRouter.put("/:id", putDirector);
-directorsRouter.patch("/:id", patchDirector);
-directorsRouter.delete("/:id", deleteDirector);
+directorsRouter.get("/", directorController.getAllDirectors);
+directorsRouter.get("/:id", directorController.getOneDirector);
+directorsRouter.post(
+  "/",
+  isAuth,
+  validateDirector,
+  directorController.addDirector,
+);
+directorsRouter.put(
+  "/:id",
+  isAuth,
+  validateDirector,
+  directorController.putDirector,
+);
+directorsRouter.patch(
+  "/:id",
+  isAuth,
+  validateDirector,
+  directorController.patchDirector,
+);
+directorsRouter.delete("/:id", directorController.deleteDirector);
 
 export default directorsRouter;

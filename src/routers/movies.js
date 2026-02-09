@@ -1,20 +1,14 @@
 import { Router } from "express";
-import {
-  getAllMovies,
-  getOneMovie,
-  addMovie,
-  putMovie,
-  patchMovie,
-  deleteMovie,
-} from "./../controllers/index.js";
+import { movieController } from "./../controllers/index.js";
+import { validateMovie, isAuth } from "./../services/index.js";
 
 const moviesRouter = Router({ mergeParams: true });
 
-moviesRouter.get("/", getAllMovies);
-moviesRouter.get("/:mid", getOneMovie);
-moviesRouter.post("/", addMovie);
-moviesRouter.put("/:mid", putMovie);
-moviesRouter.patch("/:mid", patchMovie);
-moviesRouter.delete("/:mid", deleteMovie);
+moviesRouter.get("/", movieController.getAllMovies);
+moviesRouter.get("/:mid", movieController.getOneMovie);
+moviesRouter.post("/", isAuth, validateMovie, movieController.addMovie);
+moviesRouter.put("/:mid", isAuth, validateMovie, movieController.putMovie);
+moviesRouter.patch("/:mid", isAuth, validateMovie, movieController.patchMovie);
+moviesRouter.delete("/:mid", movieController.deleteMovie);
 
 export default moviesRouter;
