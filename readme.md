@@ -43,6 +43,8 @@ http://localhost:3000/api/directors
 
 **DELETE** `/directors/:id`
 
+---
+
 ## Movies Endpoints
 
 ### Get all movies from one director
